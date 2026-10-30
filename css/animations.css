@@ -1,0 +1,252 @@
+/* =========================================
+   UTILITY LAB — ANIMATIONS
+   File: css/animations.css
+   ========================================= */
+
+/* ---------- PAGE TRANSITIONS ---------- */
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- FADE ---------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* ---------- MODAL ---------- */
+
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ---------- DROPDOWN ---------- */
+
+@keyframes dropdownEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- NOTIFICATION ---------- */
+
+@keyframes notificationEnter {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes notificationExit {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+}
+
+/* ---------- SPINNER ---------- */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- PULSE ---------- */
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---------- SKELETON LOADING ---------- */
+
+@keyframes skeleton {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg,
+            #f1f1f1 25%,
+            #e8e8e8 50%,
+            #f1f1f1 75%);
+
+    background-size: 200% 100%;
+    animation: skeleton 1.5s infinite linear;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-text {
+    width: 100%;
+    height: 12px;
+    margin-bottom: 9px;
+}
+
+.skeleton-title {
+    width: 55%;
+    height: 18px;
+    margin-bottom: 13px;
+}
+
+/* ---------- STAGGERED APPEARANCE ---------- */
+
+.animate-in {
+    animation: pageEnter 0.35s ease both;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.05s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.15s;
+}
+
+.animate-delay-4 {
+    animation-delay: 0.2s;
+}
+
+/* ---------- BUTTON INTERACTION ---------- */
+
+.primary-button:active,
+.secondary-button:active,
+.icon-button:active {
+    transform: scale(0.97);
+}
+
+/* ---------- CARD INTERACTION ---------- */
+
+.card-hover,
+.application-button {
+    will-change: transform;
+}
+
+/* ---------- ICON INTERACTION ---------- */
+
+.icon-button i,
+.nav-link i {
+    transition: transform 0.2s ease;
+}
+
+.icon-button:hover i {
+    transform: scale(1.08);
+}
+
+/* ---------- UPLOAD INTERACTION ---------- */
+
+.upload-area.dragover {
+    animation: pulse 0.8s ease infinite;
+}
+
+/* ---------- LOADING DOTS ---------- */
+
+.loading-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.loading-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 0.8s ease infinite;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "Utility Lab",
+    "short_name": "Utility Lab",
+    "description": "A unified toolkit for QR codes and screenshot intelligence.",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff"
+}

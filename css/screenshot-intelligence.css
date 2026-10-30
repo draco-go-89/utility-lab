@@ -1,0 +1,718 @@
+/* =========================================
+   UTILITY LAB — SCREENSHOT INTELLIGENCE
+   File: css/screenshot-intelligence.css
+========================================= */
+
+/* ---------- MAIN LAYOUT ---------- */
+
+.screenshot-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+}
+
+.screenshot-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.screenshot-toolbar-left,
+.screenshot-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ---------- IMPORT AREA ---------- */
+
+.screenshot-import-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 190px;
+    padding: 30px 20px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 18px;
+    background: #fafcff;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.screenshot-import-area:hover,
+.screenshot-import-area.drag-over {
+    border-color: var(--accent, #2563eb);
+    background: #eff6ff;
+}
+
+.screenshot-import-area>i {
+    font-size: 36px;
+    color: var(--accent, #2563eb);
+    margin-bottom: 15px;
+}
+
+.screenshot-import-area h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.screenshot-import-area p {
+    max-width: 300px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-secondary, #6b7280);
+}
+
+.screenshot-import-area small {
+    margin-top: 12px;
+    color: var(--text-secondary, #6b7280);
+    font-size: 11px;
+}
+
+.screenshot-import-area input[type="file"] {
+    display: none;
+}
+
+/* ---------- IMPORT PREVIEW ---------- */
+
+.screenshot-import-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.screenshot-import-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 11px;
+    background: #f1f5f9;
+}
+
+.screenshot-import-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.screenshot-import-item button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 65%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* ---------- FILTER BAR ---------- */
+
+.screenshot-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.screenshot-filter-bar select {
+    min-width: 130px;
+    max-width: 100%;
+}
+
+.screenshot-filter-chip {
+    padding: 8px 13px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 30px;
+    background: #ffffff;
+    color: var(--text-secondary, #6b7280);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.screenshot-filter-chip:hover,
+.screenshot-filter-chip.active {
+    border-color: var(--accent, #2563eb);
+    background: #eff6ff;
+    color: var(--accent, #2563eb);
+}
+
+/* ---------- SCREENSHOT GRID ---------- */
+
+.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.screenshot-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screenshot-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgb(15 23 42 / 7%);
+}
+
+.screenshot-thumbnail {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.screenshot-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.screenshot-card:hover .screenshot-thumbnail img {
+    transform: scale(1.04);
+}
+
+.screenshot-thumbnail-badge {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: rgb(255 255 255 / 90%);
+    color: #334155;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.screenshot-card-content {
+    padding: 12px;
+}
+
+.screenshot-card-title {
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.screenshot-card-description {
+    margin-top: 6px;
+    overflow: hidden;
+    color: var(--text-secondary, #6b7280);
+    font-size: 11px;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.screenshot-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.screenshot-card-footer small {
+    color: var(--text-secondary, #6b7280);
+    font-size: 10px;
+}
+
+/* ---------- OCR STATUS ---------- */
+
+.ocr-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ocr-status.completed {
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.ocr-status.failed {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.ocr-status.processing {
+    background: #fffbeb;
+    color: #92400e;
+}
+
+/* ---------- OCR PROGRESS ---------- */
+
+.ocr-progress-panel {
+    padding: 16px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+.ocr-progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 11px;
+}
+
+.ocr-progress-header strong {
+    font-size: 12px;
+}
+
+.ocr-progress-header span {
+    color: var(--accent, #2563eb);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ---------- OCR RESULT ---------- */
+
+.ocr-result-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ocr-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ocr-result-header h3 {
+    font-size: 15px;
+    margin: 0;
+}
+
+.ocr-result-text {
+    min-height: 160px;
+    padding: 16px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 12px;
+    background: #fafafa;
+    color: var(--text-primary, #111827);
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.ocr-result-text[contenteditable="true"] {
+    outline: none;
+    cursor: text;
+}
+
+.ocr-result-text[contenteditable="true"]:focus {
+    border-color: var(--accent, #2563eb);
+    background: #ffffff;
+}
+
+.ocr-result-actions {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+/* ---------- TAGS ---------- */
+
+.screenshot-tags {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.screenshot-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.screenshot-tag button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* ---------- CATEGORIES ---------- */
+
+.screenshot-category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.screenshot-category {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 12px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.screenshot-category:hover {
+    border-color: var(--accent, #2563eb);
+    background: #f8fbff;
+}
+
+.screenshot-category-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: var(--accent, #2563eb);
+}
+
+.screenshot-category-info {
+    min-width: 0;
+}
+
+.screenshot-category-info strong {
+    display: block;
+    font-size: 12px;
+}
+
+.screenshot-category-info small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-secondary, #6b7280);
+    font-size: 10px;
+}
+
+/* ---------- COLLECTIONS ---------- */
+
+.screenshot-collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.screenshot-collection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 13px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.screenshot-collection:hover {
+    border-color: var(--accent, #2563eb);
+    transform: translateY(-2px);
+}
+
+.screenshot-collection-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #eff6ff;
+    color: var(--accent, #2563eb);
+    font-size: 17px;
+}
+
+.screenshot-collection-info {
+    min-width: 0;
+}
+
+.screenshot-collection-info strong {
+    display: block;
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.screenshot-collection-info small {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-secondary, #6b7280);
+    font-size: 10px;
+}
+
+/* ---------- IMAGE VIEWER ---------- */
+
+.screenshot-viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(15 23 42 / 85%);
+}
+
+.screenshot-viewer.active {
+    display: flex;
+}
+
+.screenshot-viewer-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    gap: 20px;
+}
+
+.screenshot-viewer-image {
+    display: block;
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.screenshot-viewer-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 25%);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 10%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.screenshot-viewer-navigation {
+    position: absolute;
+    top: 50%;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 15%);
+    color: #ffffff;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.screenshot-viewer-navigation.previous {
+    left: 10px;
+}
+
+.screenshot-viewer-navigation.next {
+    right: 10px;
+}
+
+/* ---------- DUPLICATE DETECTION ---------- */
+
+.screenshot-duplicate-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+.screenshot-duplicate-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.screenshot-duplicate-header strong {
+    font-size: 13px;
+}
+
+.screenshot-duplicate-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.screenshot-duplicate-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 9px;
+    background: #f1f5f9;
+}
+
+.screenshot-duplicate-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- EMPTY STATES ---------- */
+
+.screenshot-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    padding: 25px;
+    text-align: center;
+    border: 1px dashed var(--border, #e5e7eb);
+    border-radius: 15px;
+    background: #fafafa;
+}
+
+.screenshot-empty i {
+    margin-bottom: 13px;
+    color: #94a3b8;
+    font-size: 36px;
+}
+
+.screenshot-empty h3 {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.screenshot-empty p {
+    max-width: 270px;
+    color: var(--text-secondary, #6b7280);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1100px) {
+    .screenshot-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .screenshot-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .screenshot-category-grid,
+    .screenshot-collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .screenshot-import-area {
+        min-height: 165px;
+    }
+}
+
+@media (max-width: 480px) {
+    .screenshot-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .screenshot-toolbar-left,
+    .screenshot-toolbar-right {
+        width: 100%;
+    }
+
+    .screenshot-toolbar-right button {
+        flex: 1;
+    }
+
+    .screenshot-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .screenshot-card {
+        border-radius: 11px;
+    }
+
+    .screenshot-card-content {
+        padding: 9px;
+    }
+
+    .screenshot-card-title {
+        font-size: 12px;
+    }
+
+    .screenshot-category-grid,
+    .screenshot-collection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .screenshot-import-preview {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .screenshot-viewer {
+        padding: 10px;
+    }
+
+    .screenshot-viewer-content {
+        max-height: 95vh;
+    }
+
+    .screenshot-viewer-image {
+        max-height: 80vh;
+    }
+}
+
+@media (max-width: 340px) {
+    .screenshot-grid {
+        grid-template-columns: 1fr;
+    }
+}

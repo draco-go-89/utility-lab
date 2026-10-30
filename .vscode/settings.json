@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^Get-ChildItem 'E:\\\\CODING PROJECTS\\\\HTML POGRAMMING\\\\UTILITY LAB\\\\js' -Recurse -Filter \\*\\.js \\| ForEach-Object \\{ Write-Host \"Checking \\$\\(\\$_\\.FullName\\)\"; node --check \\$_\\.FullName \\}$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

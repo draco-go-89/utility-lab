@@ -1,0 +1,437 @@
+/* =========================================
+   UTILITY LAB — BASE STYLES
+   File: css/base.css
+   ========================================= */
+
+/* ---------- RESET ---------- */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #171717;
+    background: #ffffff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: inherit;
+}
+
+input,
+textarea,
+select {
+    outline: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* ---------- DESIGN SYSTEM ---------- */
+
+:root {
+    /* Backgrounds */
+    --background: #ffffff;
+    --surface: #fafafa;
+    --surface-hover: #f4f4f5;
+    --surface-active: #eeeeef;
+
+    /* Text */
+    --text-primary: #171717;
+    --text-secondary: #737373;
+    --text-muted: #a3a3a3;
+    --text-light: #d4d4d4;
+
+    /* Borders */
+    --border: #eaeaea;
+    --border-light: #f1f1f1;
+    --border-dark: #d4d4d4;
+
+    /* Accent */
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: #eff6ff;
+    --accent-soft: #dbeafe;
+
+    /* Status */
+    --success: #16a34a;
+    --success-light: #f0fdf4;
+
+    --warning: #d97706;
+    --warning-light: #fffbeb;
+
+    --danger: #dc2626;
+    --danger-light: #fef2f2;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.08);
+
+    /* Radius */
+    --radius-sm: 7px;
+    --radius-md: 11px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+    --radius-full: 999px;
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+
+    /* Typography */
+    --font-main: "DM Sans", sans-serif;
+    --font-heading: "Manrope", sans-serif;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s ease;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    letter-spacing: -1.2px;
+}
+
+h2 {
+    font-size: clamp(21px, 3vw, 27px);
+    letter-spacing: -0.7px;
+}
+
+h3 {
+    font-size: 18px;
+    letter-spacing: -0.4px;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+small {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 10px 17px;
+    border-radius: var(--radius-md);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition-normal);
+}
+
+.primary-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 10px 17px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition-normal);
+}
+
+.secondary-button:hover {
+    background: var(--surface);
+    border-color: var(--border-dark);
+}
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    color: var(--text-secondary);
+    transition: var(--transition-normal);
+}
+
+.icon-button:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+}
+
+/* ---------- INPUTS ---------- */
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    color: var(--text-primary);
+    font-size: 13px;
+    transition: var(--transition-normal);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    accent-color: var(--accent);
+}
+
+/* ---------- LABELS ---------- */
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ---------- BADGES ---------- */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 9px;
+    border-radius: var(--radius-full);
+    background: var(--surface-hover);
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.badge-blue {
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+.badge-green {
+    background: var(--success-light);
+    color: var(--success);
+}
+
+/* ---------- UTILITY CLASSES ---------- */
+
+.hidden {
+    display: none !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.rounded {
+    border-radius: var(--radius-md);
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ---------- SCROLLBAR ---------- */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+}
+
+/* ---------- SELECTION ---------- */
+
+::selection {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+/* ---------- FOCUS ACCESSIBILITY ---------- */
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ---------- MOBILE OPTIMIZATION ---------- */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 13px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        min-height: 44px;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 16px;
+    }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

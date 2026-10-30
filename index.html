@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Utility Lab - A collection of intelligent, privacy-first browser tools.">
+
+    <title>Utility Lab — Your Digital Workspace</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/qr-studio.css">
+    <link rel="stylesheet" href="css/screenshot-intelligence.css">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+    <div class="app" id="app">
+
+        <!-- MOBILE HEADER -->
+        <header class="mobile-header">
+
+            <a href="#home" class="brand">
+                <span class="brand-icon">
+                    <i class="fa-solid fa-cube"></i>
+                </span>
+
+                <span>utility<span class="brand-light">lab</span></span>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </header>
+
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-top">
+
+                <a href="#home" class="brand desktop-brand">
+
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-cube"></i>
+                    </span>
+
+                    <span>utility<span class="brand-light">lab</span></span>
+
+                </a>
+
+
+                <!-- WORKSPACE -->
+                <div class="workspace-label">
+                    WORKSPACE
+                </div>
+
+                <nav class="navigation">
+
+                    <a href="#home" class="nav-link active" data-page="home">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Overview</span>
+                    </a>
+
+                    <a href="#qr-studio" class="nav-link" data-page="qr-studio">
+                        <i class="fa-solid fa-qrcode"></i>
+                        <span>QR Studio</span>
+                        <span class="nav-count">01</span>
+                    </a>
+
+                    <a href="#screenshot-intelligence" class="nav-link" data-page="screenshot-intelligence">
+                        <i class="fa-solid fa-images"></i>
+                        <span>Screenshot Intelligence</span>
+                        <span class="nav-count">02</span>
+                    </a>
+
+                    <a href="#collections" class="nav-link" data-page="collections">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Collections</span>
+                    </a>
+
+                    <a href="#activity" class="nav-link" data-page="activity">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Activity</span>
+                    </a>
+
+                </nav>
+
+
+                <!-- PREFERENCES -->
+                <div class="workspace-label preferences-label">
+                    PREFERENCES
+                </div>
+
+                <nav class="navigation">
+
+                    <a href="#settings" class="nav-link" data-page="settings">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+
+                <div class="storage-card">
+
+                    <div class="storage-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div class="storage-info">
+
+                        <div class="storage-heading">
+                            Local storage
+                        </div>
+
+                        <div class="storage-subtitle" id="storageText">
+                            Checking storage...
+                        </div>
+
+                    </div>
+
+                    <span class="storage-status"></span>
+
+                </div>
+
+                <div class="privacy-label">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Your data stays on your device
+                </div>
+
+                <div class="version-label">
+                    UTILITY LAB · VERSION 1.0
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MOBILE OVERLAY -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="mainContent">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <strong id="breadcrumbTitle">Overview</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <span class="local-indicator">
+                        <span class="online-dot"></span>
+                        Local mode
+                    </span>
+
+                    <button class="icon-button" id="searchButton" aria-label="Search workspace">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTAINER -->
+            <div class="page-container" id="pageContainer">
+
+
+                <!-- ================================== -->
+                <!-- HOME PAGE -->
+                <!-- ================================== -->
+
+                <section class="page active" id="page-home">
+
+                    <div class="welcome-section">
+
+                        <div>
+                            <div class="eyebrow">
+                                YOUR DIGITAL WORKSPACE
+                            </div>
+
+                            <h1>
+                                Make room for<br>
+                                <span class="heading-highlight">better ideas.</span>
+                            </h1>
+
+                            <p class="welcome-description">
+                                Everything you need to create, organize
+                                and manage your digital world.
+                            </p>
+                        </div>
+
+                        <div class="welcome-decoration">
+                            <div class="decoration-square square-one"></div>
+                            <div class="decoration-square square-two"></div>
+                            <div class="decoration-circle"></div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUICK STATS -->
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+                                <span>QR CREATED</span>
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+
+                            <div class="stat-number" id="qrCount">
+                                0
+                            </div>
+
+                            <div class="stat-description">
+                                Total QR codes
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+                                <span>SCREENSHOTS</span>
+                                <i class="fa-solid fa-images"></i>
+                            </div>
+
+                            <div class="stat-number" id="screenshotCount">
+                                0
+                            </div>
+
+                            <div class="stat-description">
+                                Images in your library
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+                                <span>COLLECTIONS</span>
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+
+                            <div class="stat-number" id="collectionCount">
+                                0
+                            </div>
+
+                            <div class="stat-description">
+                                Organized collections
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- APPLICATIONS -->
+
+                    <div class="section-heading">
+
+                        <div>
+                            <div class="eyebrow">YOUR APPLICATIONS</div>
+                            <h2>Explore your workspace</h2>
+                        </div>
+
+                        <span class="section-number">01 / 02</span>
+
+                    </div>
+
+
+                    <div class="applications-grid">
+
+
+                        <!-- QR STUDIO CARD -->
+
+                        <article class="application-card qr-card">
+
+                            <div class="application-card-top">
+
+                                <span class="application-icon qr-icon">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                </span>
+
+                                <span class="application-tag">
+                                    GENERATE & MANAGE
+                                </span>
+
+                            </div>
+
+
+                            <div class="application-preview qr-preview">
+
+                                <div class="qr-preview-box">
+
+                                    <i class="fa-solid fa-qrcode"></i>
+
+                                </div>
+
+                                <div class="preview-lines">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                                <div class="preview-floating">
+                                    <i class="fa-solid fa-check"></i>
+                                    Ready to scan
+                                </div>
+
+                            </div>
+
+
+                            <div class="application-content">
+
+                                <div class="application-number">
+                                    APPLICATION / 001
+                                </div>
+
+                                <h3>QR Studio</h3>
+
+                                <p>
+                                    Create, customize, scan and manage
+                                    QR codes in one place.
+                                </p>
+
+                                <button class="application-button" data-navigate="qr-studio">
+
+                                    Open QR Studio
+
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- SCREENSHOT INTELLIGENCE CARD -->
+
+                        <article class="application-card screenshot-card">
+
+                            <div class="application-card-top">
+
+                                <span class="application-icon screenshot-icon">
+                                    <i class="fa-solid fa-images"></i>
+                                </span>
+
+                                <span class="application-tag">
+                                    ORGANIZE & DISCOVER
+                                </span>
+
+                            </div>
+
+
+                            <div class="application-preview screenshot-preview">
+
+                                <div class="screenshot-mini mini-one">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
+                                <div class="screenshot-mini mini-two">
+                                    <i class="fa-solid fa-receipt"></i>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
+                                <div class="screenshot-mini mini-three">
+                                    <i class="fa-solid fa-code"></i>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
+                                <div class="preview-search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    Search anything...
+                                </div>
+
+                            </div>
+
+
+                            <div class="application-content">
+
+                                <div class="application-number">
+                                    APPLICATION / 002
+                                </div>
+
+                                <h3>Screenshot Intelligence</h3>
+
+                                <p>
+                                    Turn scattered screenshots into
+                                    a searchable information library.
+                                </p>
+
+                                <button class="application-button" data-navigate="screenshot-intelligence">
+
+                                    Open Screenshot Intelligence
+
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- RECENT ACTIVITY -->
+
+                    <div class="section-heading recent-heading">
+
+                        <div>
+                            <div class="eyebrow">WORKSPACE HISTORY</div>
+                            <h2>Recently accessed</h2>
+                        </div>
+
+                        <button class="text-button" data-navigate="activity">
+                            View activity
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="recent-activity" id="recentActivity">
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+
+                            <h3>Nothing here yet</h3>
+
+                            <p>
+                                Your recent activities will appear here
+                                as you start using Utility Lab.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER -->
+
+                    <footer class="page-footer">
+
+                        <span>UTILITY LAB © 2026</span>
+
+                        <span>
+                            Built for a more organized digital life.
+                        </span>
+
+                    </footer>
+
+                </section>
+
+
+                <!-- ================================== -->
+                <!-- OTHER PAGE CONTAINERS -->
+                <!-- ================================== -->
+
+                <section class="page" id="page-qr-studio">
+                    <div id="qrStudioContainer"></div>
+                </section>
+
+
+                <section class="page" id="page-screenshot-intelligence">
+                    <div id="screenshotContainer"></div>
+                </section>
+
+
+                <section class="page" id="page-collections">
+                    <div id="collectionsContainer"></div>
+                </section>
+
+
+                <section class="page" id="page-activity">
+                    <div id="activityContainer"></div>
+                </section>
+
+
+                <section class="page" id="page-settings">
+                    <div id="settingsContainer"></div>
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- External libraries -->
+    <script src="libraries/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <!-- Core modules -->
+    <script src="js/database.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/backup.js"></script>
+    <script src="js/search.js"></script>
+
+    <!-- QR Studio -->
+    <script src="js/qr/generator.js"></script>
+    <script src="js/qr/customizer.js"></script>
+    <script src="js/qr/validator.js"></script>
+    <script src="js/qr/exporter.js"></script>
+
+    <script>
+        window.UtilityQRScannerReady = (async () => {
+            if (window.Html5Qrcode) return true;
+
+            const sources = [
+                "https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js",
+                "https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"
+            ];
+
+            for (const source of sources) {
+                const loaded = await new Promise(resolve => {
+                    const script = document.createElement("script");
+                    script.src = source;
+                    script.onload = () => {
+                        const available = Boolean(window.Html5Qrcode);
+                        if (!available) script.remove();
+                        resolve(available);
+                    };
+                    script.onerror = () => {
+                        script.remove();
+                        resolve(false);
+                    };
+                    document.head.appendChild(script);
+                });
+
+                if (loaded) return true;
+            }
+
+            console.error("QR scanner library could not load from any CDN.");
+            return false;
+        })();
+    </script>
+    <script src="js/qr/scanner.js"></script>
+
+    <!-- Screenshot Intelligence -->
+    <script src="js/screenshots/importer.js"></script>
+    <script src="js/screenshots/ocr.js"></script>
+    <script src="js/screenshots/categorizer.js"></script>
+    <script src="js/screenshots/indexing.js"></script>
+    <script src="js/screenshots/duplicates.js"></script>
+    <script src="js/screenshots/viewer.js"></script>
+
+    <!-- Main application -->
+    <script src="js/app.js"></script>
+
+    <script>
+        if ("serviceWorker" in navigator && window.isSecureContext) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .catch(error => {
+                        console.warn("Offline app shell could not be registered:", error);
+                    });
+            }, { once: true });
+        }
+    </script>
+
+</body>
+
+</html>

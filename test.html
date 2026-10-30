@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generator Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 30px 16px;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #222;
+            text-align: center;
+        }
+
+        input,
+        button {
+            width: 100%;
+            max-width: 350px;
+            padding: 14px;
+            margin: 8px auto;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background: #111;
+            color: white;
+            border: 0;
+            cursor: pointer;
+        }
+
+        #output {
+            margin: 25px auto;
+        }
+
+        #output canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>QR Studio Test</h2>
+    <p>Enter text or a website URL.</p>
+
+    <input id="qrText" type="text" placeholder="https://example.com">
+
+    <button id="generateBtn">Generate QR Code</button>
+
+    <div id="output"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.4/qrcode.min.js"></script>
+
+    <script>
+        document.getElementById("generateBtn").addEventListener("click", async () => {
+            const text = document.getElementById("qrText").value.trim();
+            const output = document.getElementById("output");
+
+            output.innerHTML = "";
+
+            if (!text) {
+                output.textContent = "Please enter some text.";
+                return;
+            }
+
+            try {
+                const canvas = document.createElement("canvas");
+
+                await QRCode.toCanvas(canvas, text, {
+                    width: 250,
+                    margin: 2,
+                    errorCorrectionLevel: "H"
+                });
+
+                output.appendChild(canvas);
+            } catch (error) {
+                output.textContent = "QR generation failed: " + error.message;
+                console.error(error);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
